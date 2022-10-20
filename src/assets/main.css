@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+}
+
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.offcanvas {
+  max-width: 70%;
+}
