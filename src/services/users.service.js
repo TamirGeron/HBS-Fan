@@ -28,6 +28,7 @@ async function googleLogin() {
   try {
     const result = await signInWithPopup(auth, providerGo);
     const loginUser = await _getUser(result.user.email);
+    saveLocalUser(result.user.email);
     if (!loginUser)
       return createPlaylist(result.user.email, result.user.displayName);
     else return loginUser;
@@ -39,6 +40,7 @@ async function facebookLogin() {
   try {
     const result = await signInWithPopup(auth, providerFa);
     const loginUser = await _getUser(result.user.email);
+    saveLocalUser(result.user.email);
     if (!loginUser)
       return createPlaylist(result.user.email, result.user.displayName);
     else return loginUser;
@@ -59,13 +61,13 @@ async function createPlaylist(email, fullName) {
     favorites: [],
     fullName: fullName,
   });
-  saveLocalUser(email);
   return { favorites: [], fullName: fullName };
 }
 
 async function save(curUser) {
   return createUserWithEmailAndPassword(auth, curUser.email, curUser.password)
     .then((userCredential) => {
+      saveLocalUser(userCredential.user.email);
       return createPlaylist(userCredential.user.email, curUser.fullName);
     })
     .catch((error) => {
