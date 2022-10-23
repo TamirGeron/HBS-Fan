@@ -48,6 +48,7 @@ export default {
       player: new Audio(),
       index: 0,
       isLyrics: false,
+      favCheck: false,
       filter: {
         search: "",
         isFav: false,
@@ -67,12 +68,16 @@ export default {
       return this.$store.getters.user;
     },
     filterSongs() {
+      this.player.pause();
+      this.isPlaying = false;
       if (!this.songs) return [];
       let curSongs;
       if (this.filter.isFav) curSongs = this.user.favorites;
       else curSongs = this.songs;
-      this.player.pause();
-      this.isPlaying = false;
+      if (this.filter.isFav !== this.favCheck) {
+        this.favCheck = !this.favCheck;
+        this.index = 0;
+      }
       return curSongs.filter((song) => {
         return song.name.match(this.filter.search);
       });
@@ -119,11 +124,6 @@ export default {
       const favIdx = newUser.favorites.findIndex((fav) => fav.src === songSrc);
       newUser.favorites.splice(favIdx, 1);
       await this.$store.dispatch({ type: "updateUser", newUser: newUser });
-    },
-    onFilter() {
-      this.filterSongs = this.songs.filter((song) => {
-        return song.name.match(this.filter.search);
-      });
     },
   },
 };
