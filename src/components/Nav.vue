@@ -31,24 +31,24 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item" data-bs-dismiss="offcanvas">
-              <a class="nav-a active" aria-current="page" href="#">Home</a>
+              <a class="nav-a" aria-current="page" href="#">שירים</a>
             </li>
             <li class="nav-item" v-if="!user" data-bs-dismiss="offcanvas">
-              <a class="nav-a" href="#/login">Login</a>
+              <a class="nav-a" href="#/login">התחברות</a>
             </li>
             <li
               class="nav-item dropdown"
               v-if="!user"
               data-bs-dismiss="offcanvas"
             >
-              <a class="nav-a" href="#/signup" role="button"> Signup </a>
+              <a class="nav-a" href="#/signup" role="button"> הרשמה </a>
             </li>
             <li
               class="nav-item dropdown"
               v-if="user"
               data-bs-dismiss="offcanvas"
             >
-              <button class="nav-a" @click="onSignout">Signout</button>
+              <button class="nav-a" @click="onSignout">התנתקות</button>
             </li>
           </ul>
         </div>
@@ -83,7 +83,7 @@ export default {
 }
 
 .nav-a {
-  font-size: 4rem;
+  font-size: 2rem;
   color: black;
   text-decoration: none;
 }
@@ -91,5 +91,13 @@ export default {
 .btn-close,
 .offcanvas-title {
   color: black;
+}
+
+.nav-item {
+  text-align: right;
+}
+
+.offcanvas {
+  height: fit-content;
 }
 </style>
