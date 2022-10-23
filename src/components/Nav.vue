@@ -48,7 +48,7 @@
               v-if="user"
               data-bs-dismiss="offcanvas"
             >
-              <button class="nav-a" @click="onSignout">התנתקות</button>
+              <a class="nav-a" @click="onSignout">התנתקות</a>
             </li>
           </ul>
         </div>
