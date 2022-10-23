@@ -2,7 +2,7 @@
   <div class="songs">
     <div class="songs-content">
       <PlayerCmp
-        v-if="!(filterSongs === null || filterSongs.length === 0)"
+        v-if="!(filterSongs.length === 0)"
         :name="filterSongs[index].name"
         :isPlaying="isPlaying"
         @play="play"
@@ -10,6 +10,7 @@
         @prev="prev"
         @next="next"
       />
+
       <h2 v-else class="song-title-header">אין שירים</h2>
       <Filter :filter="filter" :user="user" />
       <Lyrics
@@ -22,6 +23,7 @@
         @click="toggleLyrics"
       />
       <Playlist
+        v-if="!(filterSongs.length === 0)"
         @onPlay="onPlay"
         :songs="filterSongs"
         :index="index"
@@ -30,6 +32,7 @@
         @onFavorite="onFavorite"
         @onUnFavorite="onUnFavorite"
       />
+      <football-loader v-else />
     </div>
   </div>
 </template>
@@ -39,9 +42,10 @@ import PlayerCmp from "../components/PlayerCmp.vue";
 import Playlist from "../components/playlist.vue";
 import Lyrics from "../components/Lyrics";
 import Filter from "../components/Filter";
+import FootballLoader from "@/loaders/footballLoader.vue";
 export default {
   name: "Songs",
-  components: { PlayerCmp, Playlist, Lyrics, Filter },
+  components: { PlayerCmp, Playlist, Lyrics, Filter, FootballLoader },
   data() {
     return {
       isPlaying: false,
@@ -49,6 +53,7 @@ export default {
       index: 0,
       isLyrics: false,
       favCheck: false,
+      isLoader: false,
       filter: {
         search: "",
         isFav: false,
@@ -84,6 +89,7 @@ export default {
     },
   },
   async created() {
+    this.isLoader = true;
     await this.$store.dispatch({ type: "loadSongs" });
   },
   methods: {
