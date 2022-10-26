@@ -38,7 +38,7 @@
 .ball {
   width: 40px;
   height: 40px;
-  background-image: url("https://cdn2.iconfinder.com/data/icons/activity-5/50/26BD-soccer-ball-128.png");
+  background-image: url(../assets/26BD-soccer-ball-128.jpg);
   background-size: cover;
   animation: roll 0.7s linear infinite;
 }
