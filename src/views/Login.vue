@@ -1,20 +1,7 @@
 <template>
   <div class="login">
+    <h1 class="display-4 font-weight-bold text-center">התחברות</h1>
     <GoFaLogin />
-    <!-- <div class="text-center mb-3">
-      <p>Sign in with:</p>
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <font-awesome-icon icon="fa-brands fa-facebook" class="fa-2xl" />
-      </button>
-
-      <button
-        @click="handleSignInGoogle"
-        type="button"
-        class="btn btn-link btn-floating mx-1"
-      >
-        <font-awesome-icon icon="fa-brands fa-google" class="fa-2xl" />
-      </button>
-    </div> -->
     <p class="text-center">or:</p>
     <form @submit.prevent="onLogin">
       <div class="form-outline mb-4">
@@ -83,6 +70,8 @@ export default {
 <style>
 .login {
   padding: 0.75rem;
+  height: 100%;
+  overflow: auto;
 }
 
 .gradient-custom-2 {

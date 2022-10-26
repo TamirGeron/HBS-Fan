@@ -1,7 +1,7 @@
 <template>
   <div class="login">
+    <h1 class="display-4 font-weight-bold text-center">הרשמה</h1>
     <GoFaLogin />
-
     <p class="text-center">or:</p>
     <form @submit.prevent="onRegister">
       <div class="form-outline mb-4">
@@ -79,5 +79,7 @@ export default {
 <style>
 .login {
   padding: 0.75rem;
+  height: 100%;
+  overflow: auto;
 }
 </style>
