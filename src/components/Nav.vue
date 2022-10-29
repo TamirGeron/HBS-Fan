@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar nav">
+  <nav class="navbar nav navbar-expand-lg">
     <div class="container-fluid">
       <h1>HBS-Fan</h1>
       <button
@@ -31,28 +31,31 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li
-              :class="{ active: songs }"
-              class="nav-item"
-              data-bs-dismiss="offcanvas"
-            >
-              <a class="nav-a" aria-current="page" href="#">שירים</a>
+            <li class="nav-item" data-bs-dismiss="offcanvas">
+              <a class="nav-a" aria-current="page" href="#">
+                <div :class="{ active: songs }" @click="active('songs')">
+                  שירים
+                </div>
+              </a>
+            </li>
+            <li class="nav-item" v-if="!user" data-bs-dismiss="offcanvas">
+              <a class="nav-a" href="#/login" @click="active('login')">
+                <div :class="{ active: login }">התחברות</div>
+              </a>
             </li>
             <li
-              :class="{ active: login }"
-              class="nav-item"
-              v-if="!user"
-              data-bs-dismiss="offcanvas"
-            >
-              <a class="nav-a" href="#/login">התחברות</a>
-            </li>
-            <li
-              :class="{ active: signup }"
               class="nav-item dropdown"
               v-if="!user"
               data-bs-dismiss="offcanvas"
             >
-              <a class="nav-a" href="#/signup" role="button"> הרשמה </a>
+              <a
+                class="nav-a"
+                href="#/signup"
+                role="button"
+                @click="active('signup')"
+              >
+                <div :class="{ active: signup }">הרשמה</div>
+              </a>
             </li>
             <li
               class="nav-item dropdown"
@@ -72,7 +75,7 @@
 export default {
   data() {
     return {
-      songs: false,
+      songs: true,
       login: false,
       signup: false,
     };
@@ -86,14 +89,30 @@ export default {
     async onSignout() {
       await this.$store.dispatch({ type: "onLogout" });
     },
-    openNav() {
-      const web = window.location.href.split("/").pop();
+    // openNav() {
+    //   const web = window.location.href.split("/").pop();
+    //   this.login = false;
+    //   this.signup = false;
+    //   this.songs = false;
+    //   if (web === "login") this.login = true;
+    //   else if (web === "signup") this.signup = true;
+    //   else this.songs = true;
+    // },
+    active(action) {
       this.login = false;
       this.signup = false;
       this.songs = false;
-      if (web === "login") this.login = true;
-      else if (web === "signup") this.signup = true;
-      else this.songs = true;
+      switch (action) {
+        case "songs":
+          this.songs = true;
+          return;
+        case "login":
+          this.login = true;
+          return;
+        case "signup":
+          this.signup = true;
+          return;
+      }
     },
   },
 };
@@ -102,11 +121,6 @@ export default {
 <style>
 .nav {
   width: 100%;
-}
-
-.offcanvas-body,
-.offcanvas-header {
-  background-color: rgb(238, 172, 172);
 }
 
 .nav-a {
@@ -122,6 +136,7 @@ export default {
 
 .nav-item {
   text-align: center;
+  margin: 0 1rem;
 }
 
 .offcanvas {
@@ -129,6 +144,6 @@ export default {
 }
 
 .active {
-  background-color: red;
+  color: blue;
 }
 </style>

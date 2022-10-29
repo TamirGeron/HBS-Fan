@@ -158,4 +158,10 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
+@media (min-width: 700px) {
+  .songs {
+    background-image: url("../assets/fan-width.jpeg");
+  }
+}
 </style>
