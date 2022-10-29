@@ -84,7 +84,10 @@ export default {
         this.index = 0;
       }
       return curSongs.filter((song) => {
-        return song.name.match(this.filter.search);
+        return (
+          song.name.match(this.filter.search) ||
+          song.lyrics.match(this.filter.search)
+        );
       });
     },
   },
