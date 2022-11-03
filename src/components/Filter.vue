@@ -166,16 +166,16 @@ export default {
 
 @keyframes click-wave {
   0% {
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
     opacity: 0.15;
     position: relative;
   }
   100% {
     height: 200px;
     width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
+    margin-left: -40px;
+    margin-top: -40px;
     opacity: 0;
   }
 }
@@ -191,8 +191,8 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
   transition: all 0.15s ease-out 0s;
   background: #a697f1;
   border: none;
@@ -211,8 +211,8 @@ export default {
   background: #e91e1e;
 }
 .option-input:checked::before {
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
   position: absolute;
   display: inline-block;
   font-size: 26.66667px;
@@ -237,7 +237,7 @@ export default {
 }
 
 .lbl-cat {
-  font-size: 2em;
+  font-size: 1em;
   font-weight: 700;
   text-align: center;
 }
