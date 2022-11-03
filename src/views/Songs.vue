@@ -57,6 +57,7 @@ export default {
       filter: {
         search: "",
         isFav: false,
+        category: "",
       },
     };
   },
@@ -82,6 +83,23 @@ export default {
       if (this.filter.isFav !== this.favCheck) {
         this.favCheck = !this.favCheck;
         this.index = 0;
+      }
+      switch (this.filter.category) {
+        case "player":
+          curSongs = curSongs.filter((song) => {
+            return song.category === "player";
+          });
+          break;
+        case "general":
+          curSongs = curSongs.filter((song) => {
+            return song.category === "general";
+          });
+          break;
+        case "new":
+          curSongs = curSongs.filter((song) => {
+            return song.category === "new";
+          });
+          break;
       }
       return curSongs.filter((song) => {
         return (
