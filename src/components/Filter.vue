@@ -97,7 +97,6 @@ export default {
 
 <style>
 .filter {
-  background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
   display: flex;
   gap: 1rem;
@@ -157,11 +156,12 @@ export default {
 }
 
 .category-on {
+  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   gap: 10px;
   flex: 1 1 auto;
-  padding: 1.25rem;
+  margin-top: 10px;
 }
 
 @keyframes click-wave {
